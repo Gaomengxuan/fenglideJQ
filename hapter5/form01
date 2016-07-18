@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框的应用</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.js"></script>
+</head>
+<body>
+	<form>
+		你爱好的运动<br/>
+		<input type="checkbox" name="items" value="足球"/>足球
+		<input type="checkbox" name="items" value="篮球"/>足球
+		<input type="checkbox" name="items" value="羽毛球"/>羽毛球
+		<input type="checkbox" name="items" value="兵乓球"/>兵乓球
+		<input type="button" id="CheckedAll" value="全选"/>
+		<input type="button" id="CheckedNo" value="全不选"/>
+		<input type="button" id="CheckedRev" value="反选"/>
+		<input type="button" id="send" value="提交"/>
+	</form>
+	<script type="text/javascript">
+	$(function(){
+		$("#CheckedAll").click(function(){
+			$("[name=items]:checkbox").attr('checked',true);
+		});
+		$("#CheckedNo").click(function(){
+			$("[name=items]:checkbox").attr('checked',false);
+		});
+		$("#CheckedRev").click(function(){
+			$("[name=items]:checkbox").each(function(){
+				this.checked=!this.checked;
+			})
+		});
+		$("#send").click(function(){
+			var str="你选中的是: \r\n";
+			$("[name=items]:checkbox:checked").each(function(){
+				str+=$(this).val()+"\r\n";
+			});
+			alert(str);
+		})
+
+
+	})
+		
+	</script>
+</body>
+</html>
