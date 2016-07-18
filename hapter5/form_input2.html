@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用一个复选框来控制</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.js"></script>
+</head>
+<body>
+<form>
+你爱好的运动是？
+	<input type="checkbox" id="CheckdeAll"/>全选/全不选<br/>
+	<input type="checkbox" name="items" value="足球"/>足球
+	<input type="checkbox" name="items" value="篮球"/>篮球
+	<input type="checkbox" name="items" value="羽毛球"/>羽毛球
+	<input type="checkbox" name="items" value="兵乓球"/>兵乓球<br/>
+	<input type="button" id="send" value="提交"/>
+	<script type="text/javascript">
+		$(function(){
+			$("#CheckdeAll").click(function(){
+				if(this.checked){
+					$("[name=items]:checkbox").attr("checked",true);
+				}else{
+					$("[name=items]:checkbox").attr("checked",false);
+				}
+				// if(this.checked){//这句代码相对于attr("checked",true);
+				// 	$("[name=items]:checkbox").attr("checked",this.checked);
+				// }
+			});
+			//思路 方法1
+			//1对复选框绑定单击事件
+			//2定义一个flag变量，默认为true
+			//3循环复选框组，当有没被选中的项时，则把变量flag的值设置为false
+			//4根据变量flag为flag，说明复选框组至少有一个未被选中
+			$("[name=items]:checkbox").click(function(){//
+				var flag=true;//为true ，说明复选框组都被选中
+				$("[name=items]:checkbox").each(function(){
+					if(!this.checked){
+						flag=false;//说明复选框组至少有一个未被选中
+					}
+				});
+				$("#CheckdeAll").attr("checked",flag);
+			});
+
+		})
+	</script>
+	<script type="text/javascript">
+		// 方法2
+		// 对复选框绑定单击事件
+		// 判断复选框的总数是否与选中的复选框数量相等
+		// 如果相等，则说明全选中了，id为"CheckdeAll"的复选框应当处于选中状态，否则不选中
+		// $(function(){
+		// 	$('[name=items]:checkbox').click(function(){
+		// 		var $tmp=$('[name=items]:checkbox');
+		// 		$("#CheckdeAll").attr("checked",$tmp.length==$tmp.filter(":checked").length);
+
+		// 	});
+		// })
+	</script>
+</form>
+</body>
+</html>
