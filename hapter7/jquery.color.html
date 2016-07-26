@@ -1,0 +1,28 @@
+<!--
+@Date:   2016-07-26T14:46:02+08:00
+@Last modified time: 2016-07-26T15:55:06+08:00
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>color插件</title>
+  <script type="text/javascript" src="../../js/1.7.2_jquery.js"></script>
+  <script type="text/javascript" src="jquery.color.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      alert($("div").color()+"\n返回字符串，证明此插件可用.");
+      //把所有的div的字体颜色都设为红色;
+      alert($("div").color("red")+"\n返回Object证明得到的是jquery对象");
+    })
+  </script>
+</head>
+<body>
+  <div  class="a">red</div>
+  <div  style="color:blue">red</div>
+  <div  style="color:green">green</div>
+  <div  style="color:yellow">yellow</div>
+</body>
+</html>
